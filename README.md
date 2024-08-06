@@ -33,17 +33,19 @@ The app uses the BLoC pattern for state management:
 - **Events:** User actions that are dispatched to the BLoC.
 - **States:** The state of the application that is emitted by the BLoC in response to events.
 
-## Getting Started
+## Contributing
 
-### Prerequisites
+Contributions are welcome! Please fork the repository and submit a pull request for any improvements or bug fixes.
 
-- Flutter SDK: [Install Flutter](https://flutter.dev/docs/get-started/install)
-- A code editor such as [VS Code](https://code.visualstudio.com/) or [Android Studio](https://developer.android.com/studio)
+## License
 
-### Installation
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
-1. Clone the repository:
+## Contact
 
-   ```bash
-   git clone https://github.com/your-username/rick-and-morty-app.git
-   cd rick-and-morty-app
+If you have any questions or suggestions, feel free to reach out.
+
+- Email: [moazosama204@gmail.com](mailto:moazosama204@gmail.com)
+- LinkedIn: [Muaz Osama](https://www.linkedin.com/in/moaz-osama-161ab723a/)
+
+
