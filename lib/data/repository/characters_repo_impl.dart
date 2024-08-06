@@ -6,9 +6,13 @@ class CharactersRepoImpl implements CharactersRepo {
   final ApiServices apiServices;
 
   CharactersRepoImpl(this.apiServices);
-  
+
   Future<List<CharacterModel>> fetchAllCharacters() async {
-    List<dynamic> characters = await apiServices.getAllCharacters();
-    return characters.map((character) => CharacterModel.fromJson(character)).toList();
+    Map<String, dynamic> characters = await apiServices.getAllCharacters();
+    List<CharacterModel> charactersList = [];
+    for (var character in characters['results']) {
+      charactersList.add(CharacterModel.fromJson(character));
+    }
+    return charactersList;
   }
 }

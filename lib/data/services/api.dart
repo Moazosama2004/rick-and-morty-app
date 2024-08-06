@@ -12,14 +12,14 @@ class ApiServices {
     dio = Dio(options);
   }
 
-  Future<List<dynamic>> getAllCharacters() async {
+  Future<Map<String, dynamic>> getAllCharacters() async {
     try {
       var response = await dio.get('character');
       print(response.data.toString());
       return response.data;
     } catch (e) {
       print(e.toString());
-      return [];
+      return {};
     }
   }
 }

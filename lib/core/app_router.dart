@@ -4,7 +4,6 @@ import 'package:rickandmorty_app/business_logic/character_cubit/character_cubit.
 import 'package:rickandmorty_app/core/constants/string.dart';
 import 'package:rickandmorty_app/data/repository/characters_repo_impl.dart';
 import 'package:rickandmorty_app/data/services/api.dart';
-import 'package:rickandmorty_app/presentation/views/character_details_view.dart';
 import 'package:rickandmorty_app/presentation/views/characters_view.dart';
 
 class AppRouter {
@@ -17,7 +16,7 @@ class AppRouter {
   }
   Route? generateRoute(RouteSettings settings) {
     switch (settings.name) {
-      case kCharacterDetailsView:
+      case kCharactersView:
         return MaterialPageRoute(
           builder: (_) => BlocProvider(
             create: (context) => characterCubit,
@@ -27,6 +26,5 @@ class AppRouter {
       // case "/characterDetailsView":
       // return MaterialPageRoute(builder: (_) => const CharacterDetailsView());
     }
-    return null;
   }
 }
