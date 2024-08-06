@@ -1,7 +1,5 @@
 # Rick and Morty Character App
 
-![App Screenshot](path-to-your-screenshot.png)
-
 ## Description
 
 The Rick and Morty Character App is a Flutter application that displays all characters from the popular TV show "Rick and Morty". Users can view detailed information about each character. The app is built using the MVVM (Model-View-ViewModel) architecture and utilizes the BLoC (Business Logic Component) pattern for state management.
@@ -14,9 +12,10 @@ The Rick and Morty Character App is a Flutter application that displays all char
 - Responsive design suitable for both mobile and tablet screens.
 
 ## Screenshots
-
-![Character List](assets/screenshots/main.jpg)
-![Character Details](assets/screenshots/scroll.jpg)
+<p>
+  <img src="assets/screenshots/main.jpg" width="45%" />
+  <img src="assets/screenshots/scroll.jpg" width="45%" />
+</p>
 
 ## Architecture
 
