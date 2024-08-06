@@ -15,8 +15,8 @@ The Rick and Morty Character App is a Flutter application that displays all char
 
 ## Screenshots
 
-![Character List](path-to-your-screenshot-list.png)
-![Character Details](path-to-your-screenshot-details.png)
+![Character List](assets/screenshots/main.jpg)
+![Character Details](assets/screenshots/scroll.jpg)
 
 ## Architecture
 
