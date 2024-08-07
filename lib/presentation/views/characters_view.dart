@@ -15,10 +15,95 @@ class CharactersView extends StatefulWidget {
 
 class _CharactersViewState extends State<CharactersView> {
   late List<CharacterModel> allCharacters;
+  late List<CharacterModel> searchedForCharacters;
+  bool isSearching = false;
+  final searchTextController = TextEditingController();
+
   @override
   void initState() {
     super.initState();
-    allCharacters = BlocProvider.of<CharacterCubit>(context).getAllCharacters();
+    BlocProvider.of<CharacterCubit>(context).getAllCharacters();
+  }
+
+  Widget buildSearchField() {
+    return Container(
+      height: 40,
+      child: TextField(
+        controller: searchTextController,
+        cursorColor: Colors.white,
+        decoration: InputDecoration(
+          filled: true,
+          contentPadding: EdgeInsets.only(left: 20),
+          fillColor: Colors.grey.shade900,
+          hintText: 'Find a Character ... ',
+          border: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(20),
+              borderSide: BorderSide(color: Colors.white)),
+          focusedBorder: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(20),
+              borderSide: BorderSide(color: Colors.white)),
+          hintStyle: TextStyle(color: kWhite, fontSize: 18),
+        ),
+        style: TextStyle(color: Colors.white, fontSize: 18),
+        onChanged: (searchedChatacter) {
+          addSearchedForItemsToSearchedList(searchedChatacter);
+        },
+      ),
+    );
+  }
+
+  void addSearchedForItemsToSearchedList(String searchedChatacter) {
+    searchedForCharacters = allCharacters
+        .where((character) =>
+            character.name!.toLowerCase().startsWith(searchedChatacter))
+        .toList();
+    setState(() {});
+  }
+
+  List<Widget> buildAppBarAction() {
+    if (isSearching) {
+      return [
+        IconButton(
+          onPressed: () {
+            clearSearch();
+            Navigator.pop(context);
+          },
+          icon: Icon(
+            Icons.clear,
+            color: Colors.white,
+          ),
+        )
+      ];
+    } else {
+      return [
+        IconButton(
+          onPressed: startSearch,
+          icon: Icon(
+            Icons.search,
+            color: Colors.white,
+          ),
+        )
+      ];
+    }
+  }
+
+  void startSearch() {
+    ModalRoute.of(context)!
+        .addLocalHistoryEntry(LocalHistoryEntry(onRemove: stopSearch));
+    setState(() {
+      isSearching = true;
+    });
+  }
+
+  void stopSearch() {
+    clearSearch();
+    setState(() {
+      isSearching = false;
+    });
+  }
+
+  void clearSearch() {
+    searchTextController.clear();
   }
 
   Widget buildBlocWidget() {
@@ -27,7 +112,7 @@ class _CharactersViewState extends State<CharactersView> {
         allCharacters = state.characters;
         return buildLoadedListWidgets();
       } else {
-        return Center(
+        return const Center(
           child: CircularProgressIndicator(),
         );
       }
@@ -57,12 +142,21 @@ class _CharactersViewState extends State<CharactersView> {
           // mainAxisSpacing: 1
         ),
         shrinkWrap: true,
-        itemCount: allCharacters.length,
+        itemCount:
+            isSearching ? searchedForCharacters.length : allCharacters.length,
         itemBuilder: (ctx, index) {
           return CharacterItem(
-            characterModel: allCharacters[index],
+            characterModel: isSearching
+                ? searchedForCharacters[index]
+                : allCharacters[index],
           );
         });
+  }
+
+  Widget buildAppTitle() {
+    return Text(
+      'Rick And Morty',
+    );
   }
 
   @override
@@ -72,19 +166,14 @@ class _CharactersViewState extends State<CharactersView> {
       appBar: AppBar(
         backgroundColor: Colors.transparent,
         elevation: 0.0,
-        title: Text(
-          'Rick And Morty',
-        ),
+        title: isSearching ? buildSearchField() : buildAppTitle(),
         centerTitle: true,
-        leading: const Icon(
-          Icons.menu,
-        ),
-        actions: [
-          IconButton(
-            onPressed: () {},
-            icon: const Icon(Icons.search),
-          ),
-        ],
+        leading: isSearching
+            ? BackButton()
+            : const Icon(
+                Icons.menu,
+              ),
+        actions: buildAppBarAction(),
       ),
       body: buildBlocWidget(),
     );
