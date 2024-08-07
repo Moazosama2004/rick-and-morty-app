@@ -1,7 +1,5 @@
 # Rick and Morty Character App
 
-![App Screenshot](path-to-your-screenshot.png)
-
 ## Description
 
 The Rick and Morty Character App is a Flutter application that displays all characters from the popular TV show "Rick and Morty". Users can view detailed information about each character. The app is built using the MVVM (Model-View-ViewModel) architecture and utilizes the BLoC (Business Logic Component) pattern for state management.
@@ -14,9 +12,10 @@ The Rick and Morty Character App is a Flutter application that displays all char
 - Responsive design suitable for both mobile and tablet screens.
 
 ## Screenshots
-
-![Character List](path-to-your-screenshot-list.png)
-![Character Details](path-to-your-screenshot-details.png)
+<p>
+  <img src="assets/screenshots/main.jpg" width="45%" />
+  <img src="assets/screenshots/scroll.jpg" width="45%" />
+</p>
 
 ## Architecture
 
@@ -34,17 +33,19 @@ The app uses the BLoC pattern for state management:
 - **Events:** User actions that are dispatched to the BLoC.
 - **States:** The state of the application that is emitted by the BLoC in response to events.
 
-## Getting Started
+## Contributing
 
-### Prerequisites
+Contributions are welcome! Please fork the repository and submit a pull request for any improvements or bug fixes.
 
-- Flutter SDK: [Install Flutter](https://flutter.dev/docs/get-started/install)
-- A code editor such as [VS Code](https://code.visualstudio.com/) or [Android Studio](https://developer.android.com/studio)
+## License
 
-### Installation
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
-1. Clone the repository:
+## Contact
 
-   ```bash
-   git clone https://github.com/your-username/rick-and-morty-app.git
-   cd rick-and-morty-app
+If you have any questions or suggestions, feel free to reach out.
+
+- Email: [moazosama204@gmail.com](mailto:moazosama204@gmail.com)
+- LinkedIn: [Muaz Osama](https://www.linkedin.com/in/moaz-osama-161ab723a/)
+
+
